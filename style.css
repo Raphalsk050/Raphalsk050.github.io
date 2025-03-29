@@ -33,7 +33,6 @@
 		height: 100vh;
 		text-align: center;
 		margin-top: 30px;
-		margin-bottom: 30px;
 
 	}
 
@@ -109,10 +108,8 @@
 		position: absolute;
 		height: 100vh;
 		margin-top: 30px;
-		margin-bottom: 30px;
 		background-color: #3d0000;
 		z-index: 1;
-		margin-bottom: 30px;
 	}
 
 	.foreground {
@@ -178,7 +175,6 @@
 		text-decoration: none;
 		border-radius: 20px;
 		margin-top: 20px;
-		margin-bottom: 20px;
 		opacity: 0;
 		transition: 0.3s ease;
 		animation: fadeIn 1s ease-in-out forwards;
@@ -216,6 +212,53 @@
 	.section h2 {
 		font-size: 2rem;
 		margin-bottom: 5px;
+	}
+
+	.socialMediasIcons {
+		background-color: #ffffff;
+		width: fit-content;
+		height: auto;
+		padding: 10px 15px;
+		display: flex;
+		align-items: center;
+		border-radius: 10px;
+		gap: 10px;
+	}
+
+	.social-link {
+		display: flex;
+		align-items: center;
+		text-decoration: none;
+		color: #0077b5;
+		/* Cor do LinkedIn */
+		font-family: 'IBM Plex Mono', monospace;
+	}
+
+	.social-text {
+		font-size: 16px;
+		color: #0077b5;
+	}
+
+	.aboutSection {
+		font-size: 12dp;
+		text-align: justify;
+		color: #f9f9f9;
+		width: 600px;
+		height: 600px;
+		padding: 30px;
+		margin-bottom: 100px;
+		margin-left: 40px;
+		background-color: #e65c00;
+		border-radius: 10%;
+	}
+
+	.defaultTitle {
+		margin-top: 10px;
+	}
+
+	.defaultText {
+		margin-top: 10px;
+		margin-bottom: 30px;
 	}
 
 	/* Footer */
