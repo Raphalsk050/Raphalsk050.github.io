@@ -10,19 +10,17 @@
 	}
 
 	body {
-		font-family: 'JetBrainsMono', monospace;
-		line-height: 1.6;
+		font-family: 'IBM Plex Mono', monospace;
 		color: #333;
 		background-color: #f9f9f9;
 	}
 
-	/* Header Section */
-	.hero {
+	main {
+		display: fit-content;
+		flex-direction: column;
 		position: relative;
-		height: 60vh;
-		text-align: center;
-		box-sizing: content-box;
-		color: white;
+		padding-bottom: 100px;
+		align-items: center;
 	}
 
 	.container {
@@ -30,16 +28,21 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		height: 100vh;
+		height: fit-content;
 		text-align: center;
-		margin-top: 30px;
+		/* margin-top: 30px; */
+	}
 
+	.buttonContainer {
+		flex-direction: column;
+		text-align: center;
+		align-items: center;
+		justify-content: center;
 	}
 
 	.typewriter-box {
-		max-width: 600px;
-		width: 80%;
-		height: auto;
+		max-width: 450px;
+		height: 150px;
 		padding: 15px;
 		overflow: hidden;
 	}
@@ -67,30 +70,6 @@
 		}
 	}
 
-	@keyframes blink {
-		50% {
-			border-color: transparent;
-		}
-	}
-
-	#subtitle::after {
-		content: "|";
-		animation: blink 0.7s infinite;
-		font-weight: bold;
-		margin-left: 5px;
-	}
-
-	@keyframes blink {
-
-		0%,
-		100% {
-			opacity: 1;
-		}
-
-		50% {
-			opacity: 0;
-		}
-	}
 
 	.container2 {
 		display: flex;
@@ -103,24 +82,15 @@
 		margin-bottom: 30px;
 	}
 
-	.background-container {
-		display: flex;
-		position: absolute;
-		height: 100vh;
-		margin-top: 30px;
-		background-color: #3d0000;
-		z-index: 1;
-	}
-
 	.foreground {
 		position: static;
 		top: 50%;
 		left: 50%;
-		transform: translate(0%, -50%);
+		/* transform: translate(0%, -50%); */
 		z-index: 1;
-		background: rgba(0.0, 0.0, 0.0, 0.0);
-		backdrop-filter: blur(10px);
-		padding: 250px;
+		background: rgba(0, 0, 0, 0);
+		/* backdrop-filter: blur(10px); */
+		padding: 50px;
 		border-radius: 12px;
 		text-align: center;
 		color: rgb(66, 66, 66);
@@ -138,10 +108,9 @@
 		opacity: 0;
 		width: 300px;
 		height: 300px;
-		margin-top: 300px;
+		margin: 30px;
 		object-fit: cover;
 		border-radius: 100%;
-		outline: #ffffff;
 		outline-style: double;
 		outline-width: 2px;
 		filter: brightness(100%);
@@ -159,6 +128,7 @@
 
 	.hero h1 {
 		font-size: 3rem;
+		
 		margin-bottom: 10px;
 	}
 
@@ -170,29 +140,31 @@
 
 	.btn {
 		padding: 10px 20px;
-		background-color: #ff6600;
-		color: white;
+		font-family: "apercu", -apple-system, system, sans-serif;
+		font-weight: 600;
+		color:  #ff6600;
 		text-decoration: none;
-		border-radius: 20px;
+		font-size: 30px;
 		margin-top: 20px;
 		opacity: 0;
-		transition: 0.3s ease;
+		transition: 0.3s linear;
 		animation: fadeIn 1s ease-in-out forwards;
 	}
+	
+	.btn:hover {
+		text-shadow: #222;
+		color: #3d1500;
+		transition: 0.3s ease;
+	}
+
 
 	.title {
-		font-family: 'IBM Plex Mono', monospace;
+		/* font-family: 'IBM Plex Mono', monospace; */
+		font-family: "apercu", -apple-system, system, sans-serif;
 		color: #161616;
 		font-weight: bold;
 	}
 
-	.btn:hover {
-		background-color: #e65c00;
-		text-shadow: #222;
-		border-radius: 100px;
-		font-size: 40px;
-		transition: 0.3s ease;
-	}
 
 	@keyframes fadeIn {
 		to {
@@ -215,22 +187,40 @@
 	}
 
 	.socialMediasIcons {
-		background-color: #ffffff;
+		/* background-color: #ffffff; */
 		width: fit-content;
 		height: auto;
 		padding: 10px 15px;
 		display: flex;
 		align-items: center;
 		border-radius: 10px;
-		gap: 10px;
+		gap: 20px;
+	}
+
+	/* .socialMediasIcons:hover {
+		background-color: #d8d8d8;
+		transition: 0.1s linear;
+	} */
+
+	.socialMedias{
+		display: flex;
+		justify-content: center;
 	}
 
 	.social-link {
 		display: flex;
 		align-items: center;
 		text-decoration: none;
-		color: #0077b5;
-		/* Cor do LinkedIn */
+		color: #e65c00;
+		transition: 200ms linear;
+		font-family: 'IBM Plex Mono', monospace;
+	}
+
+	.social-link:hover {
+		display: flex;
+		align-items: center;
+		text-decoration: none;
+		color: #000000;
 		font-family: 'IBM Plex Mono', monospace;
 	}
 
@@ -241,16 +231,70 @@
 
 	.aboutSection {
 		font-size: 12dp;
+		font-family: "apercu", -apple-system, system, sans-serif;
+		font-weight: 400;
+		justify-content: center;
 		text-align: justify;
-		color: #f9f9f9;
-		width: 600px;
-		height: 600px;
-		padding: 30px;
-		margin-bottom: 100px;
-		margin-left: 40px;
-		background-color: #e65c00;
-		border-radius: 10%;
+		color: #ffffff;
+		line-height: 22px;
+		width: 450px;
+		height: fit-content;
+		/* padding: 40px; */
+		border-radius: 50px;
 	}
+
+	.aboutContainer{
+		display: flex;
+		height: 0px;
+		overflow: hidden;
+		transition: height 0.5s ease-in-out;
+		background-color: #e65c00;
+		flex-direction: row;
+		stroke-width: 100px;
+		stroke-opacity: 100%;
+		stroke: #000000; 
+		stroke-width: 10%;
+		stroke-linecap: round;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		margin-top: 30px;
+		margin-bottom: 30px;
+	}
+
+	.portfolioContainer{
+		display: flex;
+		align-self: center;
+		justify-content: center;
+	}
+
+	.portfolio-image {
+		opacity: 1;
+		width: 100px;
+		height: 100px;
+		margin: 30px;
+		object-fit: cover;
+		border-radius: 20px;
+		transition: 0.3s ease;
+		filter: brightness(80%);
+	}
+
+	.portfolio-image:hover {
+		transition: 0.3s ease;
+		filter: brightness(100%);
+		transform: scale(1.2);
+	}
+
+
+	.aboutContainer.open {
+		height: 500px;
+		background-color: #e65c00;
+		justify-content: center;
+		text-align: center;
+		transition: height 0.5s ease-in-out;
+		opacity: 1;
+	}	
+
 
 	.defaultTitle {
 		margin-top: 10px;
@@ -261,10 +305,16 @@
 		margin-bottom: 30px;
 	}
 
-	/* Footer */
 	footer {
 		background-color: #222;
 		color: white;
+		font-family: 'IBM Plex Mono', monospace;
+		font-size: 16px;
+		position: fixed;
+		bottom: 0;
 		text-align: center;
-		padding: 15px;
+		padding-top: 5px;
+		padding-bottom: 5px;
+		width: 100%;
+		margin-top: auto;
 	}
