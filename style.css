@@ -111,8 +111,6 @@
 		margin: 30px;
 		object-fit: cover;
 		border-radius: 100%;
-		outline-style: double;
-		outline-width: 2px;
 		filter: brightness(100%);
 		animation: fadeIn 1s ease-in-out forwards;
 	}
@@ -283,6 +281,7 @@
 		transition: 0.3s ease;
 		filter: brightness(100%);
 		transform: scale(1.2);
+		box-shadow: #00000031 0px 0px 20px;
 	}
 
 
