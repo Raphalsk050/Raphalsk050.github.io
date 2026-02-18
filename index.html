@@ -1,13 +1,16 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title id="siteTitle"></title>
-	<link rel="stylesheet" href="style.css" />
-	<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+	<meta name="description" content="Rafael Aragão Morais — Software Engineer specializing in C++, game engine development, and systems programming." />
+	<title id="siteTitle">Rafael Aragão Morais — Software Engineer</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+	<link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
@@ -15,25 +18,21 @@
 		<div data-include="header.html"></div>
 	</header>
 
-
 	<main class="buttonContainer">
 		<div data-include="about.html"></div>
 		<div data-include="education.html"></div>
 		<div data-include="portfolio.html"></div>
 		<canvas id="bg-canvas" class="bgCanvas"></canvas>
 		<canvas id="bg-canvas-blur" class="bgCanvasBlur"></canvas>
-
 	</main>
 
-	
 	<footer>
 		<div data-include="footer.html"></div>
-    </footer>
+	</footer>
 
 	<script src="strings.js"></script>
 	<script src="main.js"></script>
 	<script type="module" src="shader.js"></script>
-
 </body>
 
 </html>

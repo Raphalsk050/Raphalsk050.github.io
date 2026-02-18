@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Galaxy XR — Immersive XR safety boundary system developed in collaboration with Google." />
+    <title>Galaxy XR — Rafael Aragão Morais</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        /* Page-specific styles for Galaxy XR project page */
+        .project-page {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 48px 24px 100px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--accent);
+            text-decoration: none;
+            margin-bottom: 40px;
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: 1px solid transparent;
+            transition: var(--transition-fast);
+        }
+
+        .back-link:hover {
+            border-color: var(--border-accent);
+            background: var(--accent-subtle);
+            transform: translateX(-4px);
+        }
+
+        .project-header {
+            margin-bottom: 40px;
+        }
+
+        .project-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 14px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            background: var(--accent-subtle);
+            border: 1px solid var(--border-accent);
+            border-radius: 100px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .project-title {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 2.4rem;
+            color: var(--text-primary);
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+            margin-bottom: 8px;
+        }
+
+        .project-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .project-hero {
+            width: 100%;
+            border-radius: var(--card-radius);
+            overflow: hidden;
+            border: 1px solid var(--border-subtle);
+            margin-bottom: 40px;
+        }
+
+        .project-hero img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: brightness(85%);
+        }
+
+        .project-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--card-radius);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            padding: 36px 32px;
+            margin-bottom: 24px;
+        }
+
+        .project-content h2 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 1.15rem;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .project-content h2::before {
+            content: '';
+            width: 3px;
+            height: 18px;
+            background: var(--accent);
+            border-radius: 3px;
+        }
+
+        .project-content p {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.85;
+            margin-bottom: 16px;
+        }
+
+        .project-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .tech-tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 12px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.72rem;
+            font-weight: 500;
+            color: var(--accent);
+            background: var(--accent-subtle);
+            border: 1px solid var(--border-accent);
+            border-radius: 100px;
+            letter-spacing: 0.04em;
+        }
+
+        .highlight-box {
+            background: rgba(79, 195, 247, 0.04);
+            border-left: 3px solid var(--accent);
+            padding: 16px 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 20px 0;
+        }
+
+        .highlight-box p {
+            color: var(--text-primary);
+            font-weight: 400;
+        }
+
+        @media (max-width: 768px) {
+            .project-page {
+                padding: 32px 16px 80px;
+            }
+
+            .project-title {
+                font-size: 1.8rem;
+            }
+
+            .project-content {
+                padding: 24px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="bg-canvas" class="bgCanvas"></canvas>
+    <canvas id="bg-canvas-blur" class="bgCanvasBlur"></canvas>
+
+    <main>
+        <div class="project-page">
+
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Back to Home
+            </a>
+
+            <div class="project-header">
+                <div class="project-badge">
+                    <i class="fab fa-google"></i>
+                    Google Collaboration
+                </div>
+                <h1 class="project-title">Galaxy XR</h1>
+                <p class="project-subtitle">
+                    Immersive XR platform safety system — ensuring users can explore virtual environments without
+                    physical risk.
+                </p>
+            </div>
+
+            <div class="project-hero">
+                <img src="images/galaxy_xr.jpg" alt="Galaxy XR Project" />
+            </div>
+
+            <div class="project-content">
+                <h2>Project Overview</h2>
+                <p>
+                    Galaxy XR is an immersive extended reality platform developed in collaboration with Google. The
+                    project focuses on delivering safe and seamless XR experiences across devices, allowing users to
+                    fully engage with virtual environments while maintaining awareness of their physical surroundings.
+                </p>
+            </div>
+
+            <div class="project-content">
+                <h2>My Role — Boundary System</h2>
+                <p>
+                    I worked on the <strong>Boundary</strong> — a critical component of the XR binary responsible for
+                    guaranteeing that the user remains within a safe physical area during immersive mode. This system
+                    prevents users from colliding with real-world objects, walls, or furniture while they are engaged in
+                    a virtual experience.
+                </p>
+
+                <div class="highlight-box">
+                    <p>
+                        The Boundary system is essential for user safety in any immersive XR application. It
+                        continuously tracks the user's position relative to a pre-defined safe zone and provides
+                        real-time visual and haptic feedback when they approach the edges of that zone.
+                    </p>
+                </div>
+
+                <p>
+                    The implementation required working at a low level within the XR runtime, dealing with spatial
+                    tracking data, coordinate system transformations, and rendering the boundary visualization in
+                    real-time with minimal performance overhead — all critical for maintaining the immersion and
+                    responsiveness that XR demands.
+                </p>
+
+                <div class="tech-stack">
+                    <span class="tech-tag">C++</span>
+                    <span class="tech-tag">XR Runtime</span>
+                    <span class="tech-tag">Spatial Tracking</span>
+                    <span class="tech-tag">Real-time Rendering</span>
+                    <span class="tech-tag">Performance Optimization</span>
+                </div>
+            </div>
+
+            <div class="project-content">
+                <h2>Key Challenges</h2>
+                <p>
+                    Working on the Boundary system involved solving several complex engineering challenges: processing
+                    spatial tracking data with minimal latency, rendering boundary visualizations that are visible yet
+                    non-intrusive, and ensuring the system operates within the strict performance budget that immersive
+                    XR requires — every extra millisecond of processing directly impacts the user's sense of presence.
+                </p>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2025 — Rafael Aragão Morais</p>
+    </footer>
+
+    <script type="module" src="shader.js"></script>
+</body>
+
+</html>

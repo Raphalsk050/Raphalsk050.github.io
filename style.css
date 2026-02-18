@@ -1,367 +1,545 @@
-	/* Reset básico */
-	* {
-		margin: 0;
-		padding: 0;
-		box-sizing: border-box;
+/* ============================================
+   Design System — Color Tokens & Variables
+   ============================================ */
+:root {
+	/* Background layers */
+	--bg-deep: #07070d;
+	--bg-primary: #0d0d15;
+	--bg-surface: rgba(18, 18, 30, 0.75);
+	--bg-card: rgba(22, 22, 40, 0.6);
+	--bg-card-hover: rgba(30, 30, 55, 0.8);
+
+	/* Text */
+	--text-primary: #e8e8f0;
+	--text-secondary: #9a9ab0;
+	--text-muted: #6a6a80;
+
+	/* Accents */
+	--accent: #4fc3f7;
+	--accent-hover: #81d4fa;
+	--accent-glow: rgba(79, 195, 247, 0.25);
+	--accent-subtle: rgba(79, 195, 247, 0.08);
+
+	/* Borders */
+	--border-subtle: rgba(255, 255, 255, 0.06);
+	--border-accent: rgba(79, 195, 247, 0.2);
+
+	/* Spacing */
+	--section-gap: 24px;
+	--card-radius: 16px;
+
+	/* Transitions */
+	--transition-fast: 0.2s ease;
+	--transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================
+   Reset & Base
+   ============================================ */
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+body {
+	font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+	color: var(--text-primary);
+	background-color: var(--bg-deep);
+	line-height: 1.6;
+	overflow-x: hidden;
+}
+
+/* ============================================
+   Background Canvas (Shader)
+   ============================================ */
+.bgCanvas {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: -2;
+}
+
+.bgCanvasBlur {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	background: radial-gradient(ellipse at center,
+			rgba(7, 7, 13, 0.3) 0%,
+			rgba(7, 7, 13, 0.85) 50%,
+			rgba(7, 7, 13, 0.98) 100%);
+	backdrop-filter: blur(60px);
+	-webkit-backdrop-filter: blur(60px);
+}
+
+/* ============================================
+   Layout
+   ============================================ */
+main {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-bottom: 80px;
+	min-height: 100vh;
+}
+
+.buttonContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.foreground {
+	position: relative;
+	z-index: 1;
+	width: 100%;
+	max-width: 720px;
+	margin: 0 auto;
+	padding: 40px 24px;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+
+/* ============================================
+   Profile Image
+   ============================================ */
+.profile-image {
+	width: 160px;
+	height: 160px;
+	object-fit: cover;
+	border-radius: 50%;
+	border: 3px solid var(--border-accent);
+	box-shadow:
+		0 0 30px var(--accent-glow),
+		0 8px 32px rgba(0, 0, 0, 0.4);
+	opacity: 0;
+	animation: fadeInScale 0.8s ease-out 0.2s forwards;
+	margin-bottom: 24px;
+}
+
+@keyframes fadeInScale {
+	from {
+		opacity: 0;
+		transform: scale(0.9) translateY(10px);
 	}
 
-	html {
-		scroll-behavior: smooth;
+	to {
+		opacity: 1;
+		transform: scale(1) translateY(0);
+	}
+}
+
+/* ============================================
+   Title & Typewriter
+   ============================================ */
+.title {
+	font-family: 'Inter', sans-serif;
+	font-weight: 700;
+	font-size: 2rem;
+	color: var(--text-primary);
+	letter-spacing: -0.02em;
+	margin-bottom: 4px;
+}
+
+.subtitle {
+	font-family: 'Inter', sans-serif;
+	font-weight: 400;
+	font-size: 1rem;
+	color: var(--accent);
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	margin-bottom: 20px;
+}
+
+.typewriter-box {
+	width: 100%;
+	max-width: 520px;
+	padding: 0 16px;
+	margin-bottom: 28px;
+}
+
+.typewriter {
+	overflow: hidden;
+	text-align: center;
+	font-family: 'IBM Plex Mono', monospace;
+	color: var(--text-secondary);
+	font-size: 0.9rem;
+	line-height: 1.7;
+}
+
+.typewriter.animated {
+	white-space: normal;
+	text-align: center;
+}
+
+/* ============================================
+   Language Tags
+   ============================================ */
+.languageContainer {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	margin-bottom: 24px;
+}
+
+.tag {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 5px 14px;
+	font-family: 'IBM Plex Mono', monospace;
+	font-size: 0.75rem;
+	font-weight: 500;
+	color: var(--accent);
+	background: var(--accent-subtle);
+	border: 1px solid var(--border-accent);
+	border-radius: 100px;
+	letter-spacing: 0.05em;
+	transition: var(--transition-fast);
+}
+
+.tag:hover {
+	background: rgba(79, 195, 247, 0.15);
+	box-shadow: 0 0 12px var(--accent-glow);
+	transform: translateY(-1px);
+}
+
+/* ============================================
+   Social Media Links
+   ============================================ */
+.socialMedias {
+	display: flex;
+	justify-content: center;
+	gap: 12px;
+	margin-bottom: 32px;
+}
+
+.socialMediasIcons {
+	display: flex;
+	align-items: center;
+	padding: 0;
+}
+
+.social-link {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 44px;
+	height: 44px;
+	text-decoration: none;
+	color: var(--text-secondary);
+	border: 1px solid var(--border-subtle);
+	border-radius: 12px;
+	background: var(--bg-card);
+	transition: var(--transition-fast);
+}
+
+.social-link:hover {
+	color: var(--accent);
+	border-color: var(--border-accent);
+	background: var(--accent-subtle);
+	box-shadow: 0 0 20px var(--accent-glow);
+	transform: translateY(-2px);
+}
+
+.social-text {
+	display: none;
+}
+
+/* ============================================
+   Navigation Buttons (Section Toggles)
+   ============================================ */
+.btn {
+	display: inline-block;
+	padding: 12px 32px;
+	font-family: 'Inter', sans-serif;
+	font-weight: 600;
+	font-size: 0.95rem;
+	color: var(--text-secondary);
+	text-decoration: none;
+	letter-spacing: 0.03em;
+	border-radius: 12px;
+	background: var(--bg-card);
+	border: 1px solid var(--border-subtle);
+	margin: 6px 0;
+	opacity: 0;
+	animation: fadeIn 0.6s ease-out forwards;
+	transition: var(--transition-fast);
+	cursor: pointer;
+	width: 280px;
+	text-align: center;
+}
+
+.btn:hover {
+	color: var(--accent);
+	border-color: var(--border-accent);
+	background: var(--bg-card-hover);
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), 0 0 15px var(--accent-glow);
+	transform: translateY(-2px);
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(8px);
 	}
 
-	body {
-		font-family: 'IBM Plex Mono', monospace;
-		color: #333;
-		background-color: #f9f9f9;
+	to {
+		opacity: 1;
+		transform: translateY(0);
 	}
+}
 
-	main {
-		display: fit-content;
-		flex-direction: column;
-		position: relative;
-		padding-bottom: 100px;
-		align-items: center;
-	}
+/* ============================================
+   Expandable Sections (About, Education, Portfolio)
+   ============================================ */
+.aboutContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+		opacity 0.4s ease,
+		padding 0.4s ease;
+	opacity: 0;
+	background: var(--bg-surface);
+	border: 1px solid transparent;
+	border-radius: var(--card-radius);
+	backdrop-filter: blur(40px);
+	-webkit-backdrop-filter: blur(40px);
+	margin: 8px 0;
+	width: 100%;
+	max-width: 680px;
+	padding: 0 24px;
+}
 
-	.container {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		height: fit-content;
-		text-align: center;
-		/* margin-top: 30px; */
-	}
+.aboutContainer.open {
+	max-height: 1200px;
+	opacity: 1;
+	padding: 32px 24px;
+	border-color: var(--border-accent);
+	box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3), 0 0 30px var(--accent-glow);
+}
 
-	.buttonContainer {
-		flex-direction: column;
-		text-align: center;
-		align-items: center;
-		justify-content: center;
-	}
+.aboutSection {
+	font-family: 'Inter', sans-serif;
+	font-weight: 400;
+	font-size: 0.9rem;
+	color: var(--text-secondary);
+	line-height: 1.8;
+	text-align: left;
+	width: 100%;
+	max-width: 600px;
+}
 
-	.typewriter-box {
-		width: 450px;
-		height: 150px;
-		padding: 15px;
-		/* background-color: rgba(24, 24, 24, 0.352); */
-	}
+.aboutSection .defaultText {
+	margin-top: 8px;
+}
 
-	.typewriter {
-		overflow: hidden;
-		text-align: justify;
-		font-family: 'IBM Plex Mono', monospace;
-		color: #ffffff;
-		font-size: 18px;
-	}
+/* ============================================
+   Portfolio Section
+   ============================================ */
+.portfolioContainer {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+	gap: 20px;
+	width: 100%;
+	max-width: 620px;
+	margin-top: 16px;
+}
 
-	.typewriter.animated {
-		white-space: normal;
-		text-align: justify;
-	}
+.portfolio-item {
+	position: relative;
+	border-radius: 14px;
+	overflow: hidden;
+	transition: var(--transition-smooth);
+	border: 1px solid var(--border-subtle);
+	background: var(--bg-card);
+	aspect-ratio: 16 / 10;
+}
 
-	@keyframes typing {
-		from {
-			width: 0
-		}
+.portfolio-item:hover {
+	transform: translateY(-6px) scale(1.02);
+	border-color: var(--border-accent);
+	box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 25px var(--accent-glow);
+}
 
-		to {
-			width: 100%
-		}
-	}
+.portfolio-image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+	filter: brightness(70%);
+	transition: var(--transition-smooth);
+}
 
+.portfolio-item:hover .portfolio-image {
+	filter: brightness(90%);
+	transform: scale(1.05);
+}
 
-	.container2 {
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		justify-content: Top;
-		height: 100vh;
-		text-align: center;
-		margin-top: 30px;
-		margin-bottom: 30px;
-	}
+.portfolio-label {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	padding: 16px 14px 12px;
+	background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, transparent 100%);
+	pointer-events: none;
+}
 
+.portfolio-label h4 {
+	font-family: 'Inter', sans-serif;
+	font-weight: 600;
+	font-size: 0.85rem;
+	color: var(--text-primary);
+	margin-bottom: 2px;
+}
+
+.portfolio-label span {
+	font-family: 'IBM Plex Mono', monospace;
+	font-size: 0.7rem;
+	color: var(--accent);
+	letter-spacing: 0.04em;
+}
+
+/* ============================================
+   Section Titles
+   ============================================ */
+.defaultTitle {
+	font-family: 'Inter', sans-serif;
+	font-weight: 600;
+	font-size: 1rem;
+	color: var(--text-primary);
+	margin-bottom: 12px;
+	text-align: left;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.defaultTitle::before {
+	content: '';
+	width: 3px;
+	height: 18px;
+	background: var(--accent);
+	border-radius: 3px;
+}
+
+.defaultText {
+	margin-top: 8px;
+	margin-bottom: 12px;
+}
+
+/* ============================================
+   Footer
+   ============================================ */
+footer {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	z-index: 10;
+	background: linear-gradient(to top, var(--bg-deep) 60%, transparent);
+	padding: 16px 0 10px;
+	text-align: center;
+}
+
+footer p {
+	font-family: 'IBM Plex Mono', monospace;
+	font-size: 0.75rem;
+	color: var(--text-muted);
+	letter-spacing: 0.04em;
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+@media (max-width: 768px) {
 	.foreground {
-		position: static;
-		top: 50%;
-		left: 50%;
-		z-index: 1;
-		background: rgba(0, 0, 0, 0);
-		padding: 50px;
-		border-radius: 12px;
-		text-align: center;
-		color: rgb(66, 66, 66);
+		padding: 32px 16px;
 	}
 
-	.background-image {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		display: block;
-		filter: blur(10px) brightness(60%);
+	.title {
+		font-size: 1.6rem;
 	}
 
 	.profile-image {
-		opacity: 0;
-		width: 300px;
-		height: 200px;
-		margin: 30px;
-		/* object-position: 50px; */
-		object-fit:cover;
-		zoom: 2.0;
-		border-radius: 5px;
-		filter: brightness(100%);
-		animation: fadeIn 1s ease-in-out forwards;
+		width: 120px;
+		height: 120px;
 	}
 
-	.hero-text {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		margin-top: 30px;
-		margin-bottom: 30px;
-	}
-
-	.hero h1 {
-		font-size: 3rem;
-		
-		margin-bottom: 10px;
-	}
-
-	.hero p {
-		font-size: 1.2rem;
-		margin-bottom: 20px;
-
+	.typewriter-box {
+		max-width: 100%;
 	}
 
 	.btn {
-		padding: 10px 20px;
-		font-family: "apercu", -apple-system, system, sans-serif;
-		font-weight: 600;
-		color:  #ff6600;
-		text-decoration: none;
-		font-size: 30px;
-		margin-top: 20px;
-		opacity: 0;
-		transition: 0.3s linear;
-		animation: fadeIn 1s ease-in-out forwards;
-	}
-	
-	.btn:hover {
-		text-shadow: #222;
-		color: #3d1500;
-		transition: 0.3s ease;
-	}
-
-
-	.title {
-		/* font-family: 'IBM Plex Mono', monospace; */
-		font-family: "apercu", -apple-system, system, sans-serif;
-		color: #ffffff;
-		font-weight: bold;
-	}
-
-
-	@keyframes fadeIn {
-		to {
-			opacity: 1;
-		}
-	}
-
-	/* Section */
-	.section p {
-		text-align: center;
-		color: #ffffff;
-		background-color: #222;
-		border-radius: 5px;
-
-	}
-
-	.section h2 {
-		font-size: 2rem;
-		margin-bottom: 5px;
-	}
-
-	.socialMediasIcons {
-		/* background-color: #ffffff; */
-		width: fit-content;
-		height: auto;
-		padding: 10px 15px;
-		display: flex;
-		align-items: center;
-		border-radius: 10px;
-		gap: 20px;
-	}
-
-	/* .socialMediasIcons:hover {
-		background-color: #d8d8d8;
-		transition: 0.1s linear;
-	} */
-
-	.socialMedias{
-		display: flex;
-		justify-content: center;
-	}
-
-	.social-link {
-		display: flex;
-		align-items: center;
-		text-decoration: none;
-		color: #e65c00;
-		transition: 200ms linear;
-		font-family: 'IBM Plex Mono', monospace;
-	}
-
-	.social-link:hover {
-		display: flex;
-		align-items: center;
-		text-decoration: none;
-		color: #000000;
-		font-family: 'IBM Plex Mono', monospace;
-	}
-
-	.social-text {
-		font-size: 16px;
-		color: #0077b5;
-	}
-
-	.aboutSection {
-		font-size: 12dp;
-		font-family: "apercu", -apple-system, system, sans-serif;
-		font-weight: 400;
-		justify-content: center;
-		text-align: justify;
-		color: #ffffff;
-		line-height: 22px;
-		width: 450px;
-		height: fit-content;
-		/* padding: 40px; */
-		border-radius: 50px;
-	}
-
-	.aboutContainer{
-		display: flex;
-		height: 0px;
-		overflow: hidden;
-		transition: height 0.5s ease-in-out;
-		background-color: #e65c0019;
-		flex-direction: row;
-		stroke-width: 100px;
-		stroke-opacity: 100%;
-		stroke: #000000; 
-		stroke-width: 10%;
-		stroke-linecap: round;
-		justify-content: center;
-		align-items: center;
-		text-align: center;
-		margin-top: 30px;
-		margin-bottom: 30px;
-		backdrop-filter: blur(70px);
-  		-webkit-backdrop-filter: blur(100px);
+		width: 100%;
+		max-width: 320px;
+		font-size: 0.9rem;
 	}
 
 	.aboutContainer.open {
-		height: 500px;
-		background-color: #24242494;
-		justify-content: center;
-		text-align: center;
-		transition: height 0.5s ease-in-out;
-		opacity: 1;
-	}	
-
-	.bgCanvas{
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: auto ;
-		height: auto;
-		z-index: -2;
+		padding: 24px 16px;
 	}
 
-	.bgCanvasBlur{
-		position: fixed;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		height: 100%;
-		width: 700px;
-		z-index: -1;
-		background-color: rgba(16, 16, 16, 0.802);
-		backdrop-filter: blur(100px);
-  		-webkit-backdrop-filter: blur(20px);
+	.portfolioContainer {
+		grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+		gap: 12px;
+	}
+}
+
+@media (max-width: 480px) {
+	.title {
+		font-size: 1.4rem;
 	}
 
-	.portfolioContainer{
-		display: flex;
-		align-self: center;
-		justify-content: center;
+	.typewriter {
+		font-size: 0.8rem;
 	}
 
-	.portfolio-image {
-		opacity: 1;
-		width: fit-content;
-		height: fit-content;
-		min-width: 150px;
-		max-height: 200px;
-		max-width: 200px;
-		margin: 30px;
-		object-fit: cover;
-		border-radius: 20px;
-		transition: 0.3s ease;
-		filter: brightness(80%);
+	.portfolioContainer {
+		grid-template-columns: 1fr 1fr;
+		gap: 10px;
 	}
+}
 
-	.portfolio-image:hover {
-		transition: 0.3s ease;
-		filter: brightness(100%);
-		transform: scale(1.2);
-		cursor: pointer;
-		box-shadow: #00000031 0px 0px 20px;
-	}
+/* ============================================
+   Animation delays for staggered entry
+   ============================================ */
+.btn:nth-child(1) {
+	animation-delay: 0.3s;
+}
 
-	.tag{
-		display: inline-block;
-		width: auto;
-		height: auto;
-		text-align: center;
-		font-family: 'IBM Plex Mono', monospace;
-		font-size: 20px;
-		padding-left: 10px;
-		padding-right: 10px;
-		background-color: #ffffff;
-		border-radius: 5px;
-		margin-bottom:50px;
-	}
+.btn:nth-child(2) {
+	animation-delay: 0.45s;
+}
 
-	.languagesContainer{
-		display: flex;
-		align-items: center;
-		background-color: rgb(255, 255, 255);
-		gap: 20px;
-	}
-
-
-	.defaultTitle {
-		margin-top: 10px;
-	}
-
-	.defaultText {
-		margin-top: 10px;
-		margin-bottom: 30px;
-	}
-
-	footer {
-		background-color: #222;
-		color: white;
-		font-family: 'IBM Plex Mono', monospace;
-		font-size: 16px;
-		position: fixed;
-		bottom: 0;
-		text-align: center;
-		padding-top: 5px;
-		padding-bottom: 5px;
-		width: 100%;
-		margin-top: auto;
-	}
+.btn:nth-child(3) {
+	animation-delay: 0.6s;
+}

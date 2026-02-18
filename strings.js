@@ -1,18 +1,18 @@
 const STRINGS = {
-	title: "Welcome to my space :)",
-	siteTitle: "Rafael Aragao Morais",
-	subtitle: "Hey, I'm Rafael Morais and you are in my site. My site's objective is to show what kind of things I like to work with and some of my hobbies.",
+	title: "Rafael Aragão Morais",
+	siteTitle: "Rafael Aragão Morais — Software Engineer",
+	sectionText: "Software Engineer",
+	subtitle: "Software engineer with a deep passion for game engine development and systems programming. I specialize in C++ and enjoy building high-performance, reusable systems from the ground up — from custom engines to gameplay tools.",
 	sectionTitle: "Rafael Aragão Morais",
-	sectionText: "Software engineer",
 	socialMediaButtonText: "Social Medias",
 	socialMediasTitle: "Social Medias",
 	aboutButtonText: "About me",
 	aboutTitle: "About me",
-	aboutBody: "Hi, I'm Rafael Morais, and I have the privilege of working with what I love: technology and game development. I began my journey in game development at the age of 15, and since then, I've been deeply passionate about programming and creating interactive digital experiences. I enjoy solving complex problems and dedicating time to designing smart and reusable solutions that can benefit a wide range of projects. I take particular satisfaction in developing tools and features that enhance the productivity and creativity of others. Whether it's implementing gameplay mechanics, optimizing systems, or creating custom workflows, I'm always looking for ways to contribute meaningfully to a team or community. Outside of work, I also have a strong interest in systems architecture and engine development — in fact, one of my main hobbies is building custom game engines from scratch. This hobby allows me to explore lower-level programming concepts and better understand how high-performance systems are structured. I'm constantly learning and seeking new challenges, always aiming to improve both my technical skills and my ability to collaborate effectively.",
+	aboutBody: "I'm Rafael Morais, a software engineer who has the privilege of working with what I love: technology and game development. I started my journey in game development at 15, and since then I've been deeply focused on C++ programming, engine architecture, and building interactive digital experiences.\n\nI enjoy tackling complex systems-level problems — designing performant, maintainable architectures and crafting smart, reusable solutions that scale across large codebases. I take particular satisfaction in developing engine systems, tools, and features that enhance the productivity and creativity of development teams.\n\nWhether it's implementing core engine systems, optimizing performance-critical code paths, or creating custom development workflows, I'm always looking for ways to push both the technical quality and efficiency of the projects I work on.\n\nOutside of work, one of my main hobbies is building custom game engines from scratch in C++. This allows me to explore lower-level programming concepts — memory management, rendering pipelines, multithreaded systems — and better understand how high-performance engines are structured at their core.\n\nI'm constantly learning, seeking new challenges, and aiming to improve both my technical depth and my ability to collaborate effectively within engineering teams.",
 	educationButtonText: "Education",
 	educationTitle: "Education",
-	educationBody: "I have a degree in software engineering from the State University of Amazonas. \n I participated in some university projects, including the development of a game engine and a game. I also participated in some hackathons, where I had the opportunity to work with different technologies and teams.",
+	educationBody: "I have a degree in Software Engineering from the State University of Amazonas. During my time at the university, I participated in several projects including the development of a game engine and a game. I also participated in hackathons, where I had the opportunity to work with different technologies and cross-functional teams.",
 	portfolioTitle: "Portfolio",
-	portfolioBody: "I have a few projects that I would like to share with you. They are mostly game engines, but I also have some other projects that I have worked on.",
-	footer: "© 2025 - Created by Rafael Aragão Morais"
+	portfolioBody: "A selection of projects I have contributed to — from shipped game titles to custom engine development.",
+	footer: "© 2025 — Rafael Aragão Morais"
 };

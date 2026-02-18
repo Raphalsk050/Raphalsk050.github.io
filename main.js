@@ -1,8 +1,8 @@
-// espera que a arvore fique pronta para poder chamar todos os arquivos htmls
+// Wait for the DOM tree to be ready before loading all HTML includes
 document.addEventListener("DOMContentLoaded", async () => {
 	await loadIncludes(document);
 	applyTexts();
-	typeText(10);
+	typeText(18);
 });
 
 async function loadIncludes(root) {
@@ -20,19 +20,19 @@ async function loadIncludes(root) {
 			const content = await response.text();
 			el.innerHTML = content;
 
-			// Processa includes aninhados dentro do conteúdo recém carregado
+			// Process nested includes inside the newly loaded content
 			await loadIncludes(el);
 		} catch (error) {
-			console.error("Erro ao carregar include:", error);
+			console.error("Error loading include:", error);
 		}
 	}
 }
 
-// aplica os textos em todos os elementos dos htmls verificando se sao validos antes
-// garantindo tambem que a funcao de digitar os textos somente rode quando os elementos
-// foram carregados
+// Apply text content from STRINGS to all elements, ensuring
+// the typewriter effect only starts after elements are loaded
 function applyTexts() {
 	const title = document.getElementById("title");
+	const sectionText = document.getElementById("sectionText");
 	const aboutButton = document.getElementById("aboutButton");
 	const educationButton = document.getElementById("educationButton");
 	const socialMediaButton = document.getElementById("socialMediaButton");
@@ -47,6 +47,7 @@ function applyTexts() {
 	const footerText = document.getElementById("footerText");
 
 	if (title) title.textContent = STRINGS.title;
+	if (sectionText) sectionText.textContent = STRINGS.sectionText;
 	if (aboutButton) aboutButton.textContent = STRINGS.aboutButtonText;
 	if (educationButton) educationButton.textContent = STRINGS.educationButtonText;
 	if (socialMediaButton) socialMediaButton.textContent = STRINGS.socialMediaButtonText;
@@ -58,7 +59,6 @@ function applyTexts() {
 	if (educationBody) educationBody.textContent = STRINGS.educationBody;
 	if (portfolioTitle) portfolioTitle.textContent = STRINGS.portfolioTitle;
 	if (portfolioBody) portfolioBody.textContent = STRINGS.portfolioBody;
-
 	if (footerText) footerText.textContent = STRINGS.footer;
 
 	if (aboutButton)
@@ -69,7 +69,6 @@ function applyTexts() {
 
 	if (portfolioButton)
 		portfolioButton.addEventListener("click", toogleContainer("portfolioContainer"));
-
 }
 
 function toogleContainer(containerId) {
@@ -84,11 +83,10 @@ function toogleContainer(containerId) {
 	}
 }
 
-// faz o efeito de digitar o texto com uma velocidade especifica
+// Typewriter effect with configurable speed
 function typeText(velocity) {
 	const texto = STRINGS.subtitle;
 	const elemento = document.getElementById("typewriter");
-	let i = 0;
 	let resultado = "";
 
 	function escrever() {

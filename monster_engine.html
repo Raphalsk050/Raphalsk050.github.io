@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Monster Engine — A custom C++ game engine featuring layered architecture, ECS, and modern OpenGL rendering." />
+    <title>Monster Engine — Rafael Aragão Morais</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        .project-page {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 48px 24px 100px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--accent);
+            text-decoration: none;
+            margin-bottom: 40px;
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: 1px solid transparent;
+            transition: var(--transition-fast);
+        }
+
+        .back-link:hover {
+            border-color: var(--border-accent);
+            background: var(--accent-subtle);
+            transform: translateX(-4px);
+        }
+
+        .project-header {
+            margin-bottom: 40px;
+        }
+
+        .project-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 14px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent);
+            background: var(--accent-subtle);
+            border: 1px solid var(--border-accent);
+            border-radius: 100px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .project-title {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 2.4rem;
+            color: var(--text-primary);
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+            margin-bottom: 8px;
+        }
+
+        .project-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .project-hero {
+            width: 100%;
+            border-radius: var(--card-radius);
+            overflow: hidden;
+            border: 1px solid var(--border-subtle);
+            margin-bottom: 40px;
+        }
+
+        .project-hero img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: brightness(85%);
+        }
+
+        .project-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--card-radius);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            padding: 36px 32px;
+            margin-bottom: 24px;
+        }
+
+        .project-content h2 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 1.15rem;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .project-content h2::before {
+            content: '';
+            width: 3px;
+            height: 18px;
+            background: var(--accent);
+            border-radius: 3px;
+        }
+
+        .project-content p {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.85;
+            margin-bottom: 16px;
+        }
+
+        .project-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .project-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 12px 0 0;
+        }
+
+        .project-content ul li {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            padding-left: 20px;
+            position: relative;
+            margin-bottom: 6px;
+        }
+
+        .project-content ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .tech-tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 12px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.72rem;
+            font-weight: 500;
+            color: var(--accent);
+            background: var(--accent-subtle);
+            border: 1px solid var(--border-accent);
+            border-radius: 100px;
+            letter-spacing: 0.04em;
+        }
+
+        .highlight-box {
+            background: rgba(79, 195, 247, 0.04);
+            border-left: 3px solid var(--accent);
+            padding: 16px 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 20px 0;
+        }
+
+        .highlight-box p {
+            color: var(--text-primary);
+            font-weight: 400;
+        }
+
+        .repo-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            border: 1px solid var(--border-accent);
+            border-radius: 12px;
+            background: var(--bg-card);
+            transition: var(--transition-fast);
+            margin-top: 8px;
+        }
+
+        .repo-link:hover {
+            background: var(--accent-subtle);
+            box-shadow: 0 4px 20px var(--accent-glow);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .project-page {
+                padding: 32px 16px 80px;
+            }
+
+            .project-title {
+                font-size: 1.8rem;
+            }
+
+            .project-content {
+                padding: 24px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="bg-canvas" class="bgCanvas"></canvas>
+    <canvas id="bg-canvas-blur" class="bgCanvasBlur"></canvas>
+
+    <main>
+        <div class="project-page">
+
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Back to Home
+            </a>
+
+            <div class="project-header">
+                <div class="project-badge">
+                    <i class="fas fa-cogs"></i>
+                    Open Source Engine
+                </div>
+                <h1 class="project-title">Monster Engine</h1>
+                <p class="project-subtitle">
+                    A custom C++ game engine built from scratch — featuring layered architecture, Entity Component
+                    System, and modern OpenGL rendering.
+                </p>
+            </div>
+
+            <div class="project-hero">
+                <img src="images/monster_engine.jpg" alt="Monster Engine" />
+            </div>
+
+            <div class="project-content">
+                <h2>Overview</h2>
+                <p>
+                    Monster Engine is a game engine designed as a deep exploration of engine architecture and systems
+                    programming. Built entirely in C++ (92.6% of the codebase), it serves as both a functional engine
+                    and a learning platform for understanding how high-performance game engines are structured from the
+                    ground up.
+                </p>
+                <p>
+                    The engine features a modular, layered architecture that makes it easy to extend with new game logic
+                    or tooling layers, along with high-performance entity management powered by an ECS framework.
+                </p>
+            </div>
+
+            <div class="project-content">
+                <h2>Key Features</h2>
+                <ul>
+                    <li><strong>Layered Architecture</strong> — Self-contained modules updated and rendered in a stack,
+                        easy to extend with new layers for game logic or tools</li>
+                    <li><strong>Entity Component System</strong> — Powered by entt for high-performance entity
+                        management and data-oriented design</li>
+                    <li><strong>Modern OpenGL Renderer</strong> — Shader support, materials system, and shadow mapping
+                    </li>
+                    <li><strong>Event System</strong> — Robust event bus for decoupling systems and enabling clean
+                        communication between engine modules</li>
+                    <li><strong>ImGui Integration</strong> — Built-in debug UI for real-time inspection and development
+                        tooling</li>
+                </ul>
+            </div>
+
+            <div class="project-content">
+                <h2>Architecture</h2>
+                <p>
+                    The engine is built on a few core concepts that mirror industry-standard engine design:
+                </p>
+
+                <div class="highlight-box">
+                    <p>
+                        <strong>Application</strong> manages the window and main loop. <strong>Layers</strong> are
+                        self-contained modules updated in a stack. <strong>Scenes</strong> contain all entities and
+                        components. <strong>Systems</strong> operate on entities with specific component signatures.
+                    </p>
+                </div>
+
+                <p>
+                    This separation allows each part of the engine to evolve independently — new rendering features,
+                    physics systems, or gameplay tools can be added as layers without modifying the core.
+                </p>
+
+                <div class="tech-stack">
+                    <span class="tech-tag">C++</span>
+                    <span class="tech-tag">OpenGL</span>
+                    <span class="tech-tag">GLSL</span>
+                    <span class="tech-tag">entt (ECS)</span>
+                    <span class="tech-tag">ImGui</span>
+                    <span class="tech-tag">CMake</span>
+                </div>
+            </div>
+
+            <div class="project-content">
+                <h2>Source Code</h2>
+                <p>
+                    Monster Engine is open source. Explore the full codebase, architecture diagrams, and documentation
+                    on GitHub.
+                </p>
+                <a href="https://github.com/Monster-Engine-Team/Monster-Engine" target="_blank" class="repo-link">
+                    <i class="fab fa-github fa-lg"></i>
+                    View on GitHub
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2025 — Rafael Aragão Morais</p>
+    </footer>
+
+    <script type="module" src="shader.js"></script>
+</body>
+
+</html>
